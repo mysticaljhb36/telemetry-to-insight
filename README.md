@@ -606,7 +606,117 @@
 
 # In an operational monitoring system, this type of workload indicator could be combined with persistence, cycle-duration and pressure context to prioritise periods for engineering review.
 
+# 
+
 # \## Running the Project
+
+# 
+
+# \### 1. Create the Environment
+
+# 
+
+# The project includes both `environment.yml` and `requirements.txt` for dependency management.
+
+# 
+
+# Using Conda:
+
+# 
+
+# ```bash
+
+# conda env create -f environment.yml
+
+# conda activate metropt-iot
+
+# ```
+
+# 
+
+# Alternatively, using `pip` within an existing Python environment:
+
+# 
+
+# ```bash
+
+# pip install -r requirements.txt
+
+# ```
+
+# 
+
+# Ensure the project environment is active before running the data-preparation pipeline.
+
+# 
+
+# \### 2. Prepare the Telemetry Data
+
+# 
+
+# Ensure the project environment is active before running the data-preparation pipeline.
+
+# 
+
+# From the project root, the pipeline can be executed from the command line:
+
+# 
+
+# ```bash
+
+# python run.py
+
+# ```
+
+# 
+
+# Alternatively, open the project in your preferred Python IDE, open `run.py`, ensure the configured project environment/interpreter is selected, and run the script directly.
+
+# 
+
+# The pipeline uses the settings in `config/config.yaml` to:
+
+# 
+
+# 1\. ingest the MetroPT-3 source data;
+
+# 2\. create the configured development extract;
+
+# 3\. validate the development telemetry; and
+
+# 4\. preprocess and save the dataset required for analysis.
+
+# 
+
+# Existing raw and development datasets are reused where applicable to avoid unnecessary repeated ingestion work.
+
+# 
+
+# \### 3. Run the Analysis
+
+# 
+
+# After the data-preparation pipeline has completed, open:
+
+# 
+
+# ```text
+
+# notebooks/telemetry\_insight.ipynb
+
+# ```
+
+# 
+
+# Run the notebook from top to bottom to reproduce the exploratory analysis, engineered operational features, interactive visualisations and resulting telemetry insight.
+
+# 
+
+# The intended execution flow is therefore:
+
+# 
+
+# \*\*Environment → `run.py` → Processed Telemetry → `telemetry\_insight.ipynb` → Operational Insight\*\*
 
 # 
 
