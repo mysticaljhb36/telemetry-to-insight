@@ -206,11 +206,137 @@
 
 # 
 
+# The repository separates configuration, data, reusable source code, analytical work and automated tests into distinct directories.
+
+# 
+
+# ```text
+
+# telemetry-to-insight/
+
+# ├── README.md
+
+# ├── requirements.txt
+
+# ├── environment.yml
+
+# ├── .gitignore
+
+# ├── run.py
+
+# │
+
+# ├── config/
+
+# │   └── config.yaml
+
+# │
+
+# ├── data/
+
+# │   ├── raw/
+
+# │   ├── development/
+
+# │   ├── processed/
+
+# │   └── README.md
+
+# │
+
+# ├── notebooks/
+
+# │   └── telemetry\_insight.ipynb
+
+# │
+
+# ├── src/
+
+# │   ├── \_\_init\_\_.py
+
+# │   ├── ingestion.py
+
+# │   ├── validation.py
+
+# │   ├── preprocessing.py
+
+# │   ├── features.py
+
+# │   └── visualisation.py
+
+# │
+
+# └── tests/
+
+# &#x20;   ├── test\_features.py
+
+# &#x20;   └── test\_validation.py
+
+# ```
+
+# 
+
+# The main components are:
+
+# 
+
+# \- \*\*`config/`\*\* – project configuration, including data-source and development-period settings.
+
+# \- \*\*`data/`\*\* – local storage for raw, development and processed telemetry datasets.
+
+# \- \*\*`src/`\*\* – reusable Python modules supporting ingestion, validation, preprocessing, feature engineering and visualisation.
+
+# \- \*\*`notebooks/`\*\* – the primary analytical notebook used for telemetry exploration, feature development, visualisation and insight generation.
+
+# \- \*\*`tests/`\*\* – automated tests for reusable project functionality.
+
+# \- \*\*`run.py`\*\* – root-level entry point that orchestrates the data-preparation pipeline.
+
+# 
+
+# Telemetry data files are kept outside version control so that the repository remains lightweight and the source data can be reproduced through the ingestion workflow.
+
+# 
+
 # \## Data Preparation Pipeline
 
 # 
 
+# The reusable data-preparation workflow is orchestrated by `run.py` and implemented through modules within `src/`. The pipeline prepares a consistent telemetry dataset for downstream analysis while keeping data engineering logic separate from the analytical notebook.
+
+# 
+
 # \### Ingestion
+
+# 
+
+# The ingestion stage is implemented in `src/ingestion.py` and uses settings defined in `config/config.yaml`.
+
+# 
+
+# The workflow:
+
+# 
+
+# \- downloads the public MetroPT-3 source archive when the raw dataset is not already available locally;
+
+# \- reads the source CSV from the compressed archive;
+
+# \- converts the raw telemetry to \*\*Parquet\*\* for more efficient subsequent storage and access;
+
+# \- extracts the configured development period from the raw dataset; and
+
+# \- stores the resulting development dataset separately from the original raw telemetry.
+
+# 
+
+# Both the raw Parquet dataset and development extract are reused when already available, avoiding unnecessary repeated downloads and processing during iterative development.
+
+# 
+
+# The development extract is created using Parquet filtering against the configured date range, allowing the proof of concept to work with the required operational period without repeatedly loading the complete source dataset into the analytical workflow.
+
+# 
 
 # \### Validation
 
