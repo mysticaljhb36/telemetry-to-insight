@@ -724,5 +724,29 @@
 
 # 
 
+# This proof of concept is based on a single public railway air-compressor telemetry dataset and should be interpreted as an exploratory condition-monitoring analysis rather than a production diagnostic system.
+
+# 
+
+# Key limitations include:
+
+# 
+
+# \- \*\*External reference windows\*\* – the documented air-leak periods provide operational reference windows rather than observation-level failure labels. The telemetry therefore cannot independently establish the underlying cause of abnormal workload behaviour.
+
+# \- \*\*Telemetry gaps\*\* – larger timestamp gaps are present within the source data. These were retained rather than imputed because their causes are unknown, but they may affect calculated cycle durations where observations are interrupted.
+
+# \- \*\*Workload is not fault-specific\*\* – sustained loaded utilisation also occurs outside the documented air-leak periods, demonstrating that elevated compressor workload alone is insufficient to diagnose an air leak.
+
+# \- \*\*Rolling interval selection\*\* – the 30-minute rolling utilisation interval is an exploratory monitoring window rather than an optimised threshold. Different intervals may provide different trade-offs between responsiveness and sensitivity to short-lived operating variation.
+
+# \- \*\*Single-asset analysis\*\* – the analysis does not establish whether the observed operating characteristics or monitoring parameters generalise across other compressors or train assets.
+
+# 
+
+# Further development should evaluate monitoring parameters across longer operating histories and multiple comparable assets, incorporating maintenance records and engineering knowledge to determine whether thresholds should be asset-specific or transferable across similar equipment.
+
+# 
+
 # \## Data Attribution
 
