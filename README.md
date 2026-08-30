@@ -434,7 +434,43 @@
 
 # 
 
+# The analysis follows a domain-led approach, using the documented behaviour of the air-compressor system to determine which telemetry signals and derived metrics are operationally meaningful.
+
+# 
+
+# Rather than generating a large number of arbitrary statistical features, the analysis progressively moves from understanding normal compressor behaviour to evaluating changes in workload around documented air-leak periods.
+
+# 
+
 # \### Exploratory Analysis
+
+# 
+
+# Initial exploratory analysis was used to understand the operating relationships between the compressor's analogue measurements and digital control states before engineering higher-level operational metrics.
+
+# 
+
+# The exploration focused particularly on:
+
+# 
+
+# \- `DV\_eletric` as an indicator of when the compressor is operating under load;
+
+# \- `Motor\_current` to understand electrical behaviour across compressor operating states;
+
+# \- `TP2` and supporting pressure signals to understand compressor pressure behaviour; and
+
+# \- digital control signals such as `COMP` and `MPG` to understand compressor operating transitions.
+
+# 
+
+# This established the operational context required to interpret subsequent features rather than treating individual telemetry signals independently.
+
+# 
+
+# The exploratory analysis also showed that motor current while the compressor was loaded remained relatively stable across much of the development period. This shifted the analytical focus towards \*\*how often and how long the compressor was required to operate under load\*\*, rather than treating loaded motor-current magnitude alone as the primary indicator of changing workload.
+
+# 
 
 # \### Feature Engineering
 
