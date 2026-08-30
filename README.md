@@ -164,6 +164,44 @@
 
 # 
 
+# The solution separates reusable data-preparation logic from exploratory analysis and visualisation.
+
+# 
+
+# The end-to-end workflow is:
+
+# 
+
+# \*\*Public MetroPT-3 Telemetry → Ingestion → Development Dataset → Validation → Preprocessing → Exploratory Analysis → Feature Engineering → Operational Insight\*\*
+
+# 
+
+# The project is organised around three main layers:
+
+# 
+
+# 1\. \*\*Configuration and data preparation\*\*  
+
+# &#x20;  Project configuration defines source locations, local data paths and the development period. Reusable Python modules handle ingestion, validation and preprocessing.
+
+# 
+
+# 2\. \*\*Pipeline orchestration\*\*  
+
+# &#x20;  The root-level `run.py` script coordinates the data-preparation stages, providing a single entry point for preparing the telemetry required by the analysis.
+
+# 
+
+# 3\. \*\*Analysis and insight\*\*  
+
+# &#x20;  `notebooks/telemetry\_insight.ipynb` consumes the processed telemetry and contains the exploratory analysis, domain-led feature engineering, interactive visualisation and interpretation of compressor operating behaviour.
+
+# 
+
+# This separation keeps the repeatable data-preparation workflow outside the notebook while retaining the notebook as a transparent analytical environment for investigating the telemetry and communicating the resulting insight.
+
+# 
+
 # \## Project Structure
 
 # 
