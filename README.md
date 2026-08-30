@@ -474,6 +474,52 @@
 
 # \### Feature Engineering
 
+# 
+
+# Feature engineering translates the raw compressor control states into operational metrics that are easier to interpret from a condition-monitoring perspective.
+
+# 
+
+# The analysis focuses on three complementary aspects of compressor workload:
+
+# 
+
+# \- \*\*Loaded utilisation\*\* – the proportion of observed telemetry samples for which `DV\_eletric = 1`, representing the amount of observed time the compressor operates under load.
+
+# \- \*\*Load-cycle frequency\*\* – the number of transitions into the loaded state, providing an indication of how frequently the compressor is required to begin loaded operation.
+
+# \- \*\*Loaded-cycle duration\*\* – the elapsed time associated with individual loaded operating cycles, providing context on whether workload is driven by repeated cycling, sustained loaded operation, or a combination of both.
+
+# 
+
+# A cumulative `load\_cycle\_id` is used to identify individual loaded cycles and provide traceability when investigating specific operating periods.
+
+# 
+
+# \### Rolling Workload Indicator
+
+# 
+
+# In addition to daily operational metrics, a causal \*\*30-minute rolling loaded-utilisation\*\* feature was developed to retain short-term temporal context that daily aggregation can obscure.
+
+# 
+
+# The rolling metric uses only current and preceding observations, allowing changes in recent compressor workload to be examined through time without incorporating future telemetry.
+
+# 
+
+# The 30-minute interval is an exploratory monitoring window rather than an assumed optimal threshold. It provides sufficient smoothing to expose sustained changes in workload while retaining considerably more temporal resolution than daily aggregation.
+
+# 
+
+# Together, these features allow compressor behaviour to be interpreted across three dimensions:
+
+# 
+
+# \*\*How much is it working? → How often is it cycling? → How long does each loaded period persist?\*\*
+
+# 
+
 # \### Documented Air-Leak Analysis
 
 # 
