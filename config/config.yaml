@@ -28,7 +28,7 @@ data:
   # This avoids repeatedly processing the complete raw dataset.
   development_parquet: "data/development/metropt3_development.parquet"
 
-  # Validated, cleaned and feature-engineered dataset.
+  # Validated and cleaned dataset used for downstream analysis.
   processed_parquet: "data/processed/metropt3_processed.parquet"
 
 

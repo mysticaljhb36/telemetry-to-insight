@@ -1,0 +1,15 @@
+name: telemetry-to-insight
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - pandas
+  - pyarrow
+  - requests
+  - pyyaml
+  - jupyter
+  - plotly
+  - matplotlib
+  - pip
