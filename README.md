@@ -524,9 +524,87 @@
 
 # 
 
+# The engineered workload metrics were evaluated against four documented air-leak periods provided with the MetroPT-3 dataset.
+
+# 
+
+# These periods are treated as \*\*external reference windows rather than telemetry labels\*\*. The analysis therefore compares observed compressor behaviour around the documented periods without assuming that every change in workload represents an air leak.
+
+# 
+
+# The analysis combines:
+
+# 
+
+# \- raw telemetry inspection around the documented events;
+
+# \- daily loaded utilisation and load-cycle frequency;
+
+# \- individual loaded-cycle duration;
+
+# \- the 30-minute rolling loaded-utilisation indicator; and
+
+# \- supporting pressure and motor-current behaviour.
+
+# 
+
+# Across the four documented air-leak periods, the rolling workload indicator showed sustained increases in loaded compressor operation and reached very high utilisation during each event window.
+
+# 
+
+# However, a separate high-utilisation episode on \*\*28–29 March 2020\*\*, outside the documented air-leak periods, exhibited similar sustained workload behaviour.
+
+# 
+
+# This counterexample is important because it demonstrates that elevated loaded utilisation is \*\*not specific to a documented air leak\*\*. Instead, it should be interpreted as an indicator of abnormal or sustained compressor workload whose underlying cause requires additional operational context or engineering investigation.
+
+# 
+
+# The comparison therefore focuses on identifying meaningful changes in compressor operating behaviour rather than assigning a failure class directly from the telemetry.
+
+# 
+
 # \## Key Operational Insight
 
 # 
+
+# The analysis indicates that compressor telemetry can identify \*\*developing and persistent changes in workload that may warrant engineering investigation\*\*, without assuming the underlying cause.
+
+# 
+
+# During all four documented air-leak periods, the 30-minute rolling loaded-utilisation indicator developed into sustained high compressor utilisation and reached \*\*100% within the first hour of the documented event window\*\*.
+
+# 
+
+# The supporting operational features provide additional context:
+
+# 
+
+# \- \*\*loaded utilisation\*\* captures the overall proportion of observed time spent operating under load;
+
+# \- \*\*load-cycle frequency\*\* distinguishes frequent cycling from sustained operation; and
+
+# \- \*\*loaded-cycle duration\*\* identifies periods where the compressor remains continuously loaded for unusually long durations.
+
+# 
+
+# Motor current during loaded operation remained comparatively stable across much of the development period. This suggests that changes in operational burden are better characterised by \*\*how frequently and how persistently the compressor operates under load\*\*, rather than loaded motor-current magnitude alone.
+
+# 
+
+# Importantly, the high-utilisation episode observed on \*\*28–29 March 2020\*\* demonstrates that sustained compressor workload is not uniquely associated with the documented air-leak periods.
+
+# 
+
+# The resulting customer insight is therefore:
+
+# 
+
+# > \*\*Sustained changes in compressor workload can provide an interpretable condition-monitoring signal for identifying periods that may warrant engineering investigation, but workload behaviour alone is insufficient to determine the underlying fault.\*\*
+
+# 
+
+# In an operational monitoring system, this type of workload indicator could be combined with persistence, cycle-duration and pressure context to prioritise periods for engineering review.
 
 # \## Running the Project
 
