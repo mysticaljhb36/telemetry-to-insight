@@ -340,7 +340,93 @@
 
 # \### Validation
 
+# 
+
+# The validation stage is implemented in `src/validation.py` and is applied to the development dataset before preprocessing and analysis.
+
+# 
+
+# The current validation workflow checks:
+
+# 
+
+# \- expected telemetry columns and unexpected fields;
+
+# \- data types;
+
+# \- missing values;
+
+# \- duplicate rows;
+
+# \- duplicate timestamps;
+
+# \- observed states of digital telemetry signals;
+
+# \- whether documented digital signals contain only expected binary states; and
+
+# \- timestamp continuity and unusually large gaps between observations.
+
+# 
+
+# Validation identified no missing values, duplicate rows or duplicate timestamps within the development dataset. The digital signals evaluated as binary contained only `0` and `1` states.
+
+# 
+
+# An additional source column, `Unnamed: 0`, was identified during schema validation and is subsequently removed during preprocessing.
+
+# 
+
+# \### Temporal Continuity
+
+# 
+
+# Analysis of consecutive timestamps showed a \*\*median interval of approximately 10 seconds\*\*, consistent with the typical interval observed in the development telemetry.
+
+# 
+
+# However, \*\*267 intervals exceeded twice the median sampling interval\*\*, with the largest observed gap being approximately \*\*two days\*\*.
+
+# 
+
+# These gaps are retained rather than reconstructed or imputed because their cause cannot be determined from the telemetry alone. They may reflect operational downtime, connectivity issues, maintenance or other system behaviour.
+
+# 
+
+# Preserving these gaps also avoids introducing artificial telemetry states into subsequent operational analysis.
+
+
+
+# 
+
 # \### Preprocessing
+
+# 
+
+# The preprocessing stage is implemented in `src/preprocessing.py` and prepares the validated development telemetry for downstream analysis.
+
+# 
+
+# The workflow:
+
+# 
+
+# \- removes the redundant `Unnamed: 0` source column identified during schema validation;
+
+# \- converts `timestamp` to a datetime representation, raising an error if conversion fails;
+
+# \- sorts observations chronologically by timestamp;
+
+# \- resets the DataFrame index following sorting; and
+
+# \- stores the prepared dataset in \*\*Parquet\*\* format for use by the analytical notebook.
+
+# 
+
+# The preprocessing stage intentionally avoids imputing missing timestamps or reconstructing gaps in the telemetry. This preserves the observed temporal behaviour of the source data and prevents artificial observations from being introduced into subsequent feature engineering and operational analysis.
+
+# 
+
+# The resulting processed dataset provides the consistent chronological input used by `notebooks/telemetry\_insight.ipynb`.
 
 # 
 
