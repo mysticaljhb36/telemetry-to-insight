@@ -1,0 +1,65 @@
+# config/config.yaml
+
+# ---------------------------------------------------------
+# Source configuration
+# ---------------------------------------------------------
+source:
+  dataset_name: "MetroPT-3"
+
+  # Official UCI download endpoint.
+  # The source is distributed as a ZIP archive containing
+  # the telemetry CSV and supporting documentation.
+  dataset_url: "https://archive.ics.uci.edu/static/public/791/metropt+3+dataset.zip"
+
+  # Telemetry file to extract from the downloaded ZIP archive.
+  csv_filename: "MetroPT3(AirCompressor).csv"
+
+
+# ---------------------------------------------------------
+# Data storage layers
+# ---------------------------------------------------------
+data:
+
+  # Raw represents the source telemetry.
+  # Stored as Parquet for efficient repeated reads.
+  raw_parquet: "data/raw/metropt3_raw.parquet"
+
+  # Smaller controlled dataset used during development.
+  # This avoids repeatedly processing the complete raw dataset.
+  development_parquet: "data/development/metropt3_development.parquet"
+
+  # Validated, cleaned and feature-engineered dataset.
+  processed_parquet: "data/processed/metropt3_processed.parquet"
+
+
+# ---------------------------------------------------------
+# Ingestion configuration
+# ---------------------------------------------------------
+ingestion:
+
+  # Stream the remote ZIP in 1 MB chunks:
+  # 1 MB = 1024 * 1024 = 1,048,576 bytes.
+  #
+  # Streaming prevents the complete remote file from being
+  # held in memory before it is written to disk.
+  #
+  # This keeps peak memory consumption relatively small and
+  # makes the ingestion approach more scalable for larger files.
+  download_chunk_size_bytes: 1048576
+
+  # Prevent network operations from waiting indefinitely
+  # if the remote server becomes unresponsive.
+  request_timeout_seconds: 60
+
+# ---------------------------------------------------------
+# Development configuration
+# ---------------------------------------------------------
+development:
+
+  # Controlled telemetry period used while developing and
+  # testing the analytical pipeline.
+  #
+  # Full timestamps are used so the extraction boundaries
+  # are explicit and reproducible.
+  start_timestamp: "2020-03-01 00:00:00"
+  end_timestamp: "2020-07-31 23:59:59"
