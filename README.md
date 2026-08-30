@@ -750,3 +750,31 @@
 
 # \## Data Attribution
 
+# 
+
+# This project uses the \*\*MetroPT-3\*\* dataset made publicly available through the UCI Machine Learning Repository.
+
+# 
+
+# \*\*Dataset:\*\* MetroPT-3  
+
+# \*\*Repository:\*\* UCI Machine Learning Repository  
+
+# \*\*Source:\*\* https://archive.ics.uci.edu/dataset/791/metropt+3+dataset
+
+# 
+
+# The dataset contains operational telemetry collected from the Air Production Unit (APU) of a metropolitan train.
+
+# 
+
+# The original telemetry data and locally generated development and processed datasets are excluded from version control. The project ingestion workflow can retrieve and prepare the source data required to reproduce the analysis.
+
+
+
+
+
+
+
+### \*\*Source:\*\* \[MetroPT-3 – UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/791/metropt+3+dataset)
+
