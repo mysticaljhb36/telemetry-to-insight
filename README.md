@@ -100,6 +100,66 @@
 
 # 
 
+# This project uses the \*\*MetroPT-3\*\* dataset from the UCI Machine Learning Repository. The dataset contains operational telemetry collected from the \*\*Air Production Unit (APU) of a metropolitan train\*\* between February and August 2020.
+
+# 
+
+# The telemetry contains analogue measurements and digital control-state signals associated with compressor operation, including pressure, temperature, motor current and air-intake/control states.
+
+# 
+
+# Key signals used within this analysis include:
+
+# 
+
+# | Signal | Description / Analytical Role |
+
+# |---|---|
+
+# | `TP2` | Compressor pressure (bar) |
+
+# | `Motor\_current` | Compressor motor current |
+
+# | `DV\_eletric` | Digital state indicating loaded compressor operation |
+
+# | `COMP` | Compressor operating/control-state signal |
+
+# | `MPG` | Compressor control-state signal |
+
+# 
+
+# Additional telemetry signals are retained within the processed dataset and used where necessary to understand the wider operating context.
+
+# 
+
+# \### Development Period
+
+# 
+
+# For iterative development and analysis, a subset covering \*\*1 March to 31 July 2020\*\* was extracted from the source dataset.
+
+# 
+
+# The development dataset contains \*\*1,081,134 observations\*\* and includes:
+
+# 
+
+# \- operating history before the first documented air-leak period;
+
+# \- all four documented air-leak periods used as reference windows; and
+
+# \- operating history following the final documented event.
+
+# 
+
+# Using this development period reduced the volume of data repeatedly processed during exploratory development while retaining the operational periods required for the proof of concept.
+
+# 
+
+# Validation of the actual telemetry timestamps identified a \*\*typical sampling interval of approximately 10 seconds\*\*. Larger gaps were also observed and are retained rather than reconstructed or imputed.
+
+# 
+
 # \## Solution Architecture
 
 # 
