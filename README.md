@@ -40,7 +40,29 @@
 
 
 
+# 
+
 # \## Customer / Operational Question
+
+# 
+
+# The analysis investigates whether changes in railway air-compressor telemetry can reveal meaningful changes in operating behaviour around documented air-leak periods.
+
+# 
+
+# The central operational question is:
+
+# 
+
+# > \*\*Can compressor telemetry identify developing or persistent changes in workload that may warrant engineering investigation?\*\*
+
+# 
+
+# Rather than assuming that elevated compressor activity represents a specific failure, the analysis focuses on observable changes in asset behaviour and the operational context surrounding them.
+
+# 
+
+# This provides a basis for considering how telemetry-derived indicators could support \*\*condition monitoring, maintenance prioritisation and engineering decision-making\*\*.
 
 # 
 
