@@ -70,6 +70,32 @@
 
 # 
 
+# This proof of concept demonstrates an end-to-end workflow for transforming operational railway air-compressor telemetry into interpretable engineering insight.
+
+# 
+
+# The project covers:
+
+# 
+
+# \- ingestion and preparation of the public MetroPT-3 telemetry dataset;
+
+# \- validation of data quality, structure and temporal characteristics;
+
+# \- exploratory analysis of compressor operating behaviour;
+
+# \- domain-led feature engineering focused on compressor workload and cycling;
+
+# \- comparison of engineered operational metrics against documented air-leak periods; and
+
+# \- development of an interpretable operational insight that could support condition monitoring and engineering investigation.
+
+# 
+
+# The analysis is exploratory and does not attempt to assign a specific failure cause from telemetry alone. Documented air-leak periods are used as external reference windows against which observed compressor behaviour can be evaluated.
+
+# 
+
 # \## Dataset
 
 # 
