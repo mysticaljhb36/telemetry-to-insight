@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-To reproduce the project from a fresh clone, see the **[Setup Guide](SETUP.md)**.
+To reproduce the project from a fresh clone, see the **[Setup Guide](https://github.com/mysticaljhb36/telemetry-to-insight/blob/master/setup.md)**.
 
 **Repository:** [telemetry-to-insight](https://github.com/mysticaljhb36/telemetry-to-insight)
 
