@@ -1,5 +1,11 @@
 # Telemetry-to-Insight: MetroPT-3 Air Compressor Analysis
 
+## Getting Started
+
+To reproduce the project from a fresh clone, see the **[Setup Guide](SETUP.md)**.
+
+**Repository:** [telemetry-to-insight](https://github.com/mysticaljhb36/telemetry-to-insight)
+
 ## Overview
 
 This project presents an end-to-end **telemetry-to-insight** exploration of the MetroPT-3 railway air-compressor dataset.
@@ -229,58 +235,6 @@ Motor current during loaded operation remained comparatively stable across much 
 > **Sustained changes in compressor workload can provide an interpretable condition-monitoring signal for identifying periods that may warrant engineering investigation, but workload behaviour alone is insufficient to determine the underlying fault.**
 
 In an operational monitoring system, this type of workload indicator could be combined with persistence, cycle-duration and pressure context to prioritise periods for engineering review.
-
-## How to Set Up and Run
-
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd telemetry-to-insight
-```
-
-### 2. Create and Activate the Conda Environment
-
-```bash
-conda env create -f environment.yml
-conda activate telemetry-to-insight
-```
-
-The environment name is defined in `environment.yml`.
-
-Alternatively, dependencies can be installed into an existing Python environment:
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Run the Data-Preparation Pipeline
-
-From the project root:
-
-```bash
-python run.py
-```
-
-The pipeline retrieves and persists the source telemetry when required, creates the configured development extract, validates the telemetry, preprocesses the dataset and records runtime activity in `logs/pipeline.log`.
-
-Existing raw and development datasets are reused when available.
-
-### 4. Launch the Analysis
-
-```bash
-jupyter notebook
-```
-
-Open:
-
-```text
-notebooks/telemetry_insight.ipynb
-```
-
-Run the notebook from top to bottom to reproduce the exploratory analysis, engineered operational features, interactive visualisations and resulting insight.
-
-**Clone → Environment → `run.py` → Processed Telemetry → `telemetry_insight.ipynb` → Operational Insight**
 
 ## Current Limitations
 
