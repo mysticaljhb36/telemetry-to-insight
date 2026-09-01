@@ -37,7 +37,7 @@ The project was additionally verified from a fresh Git clone using a newly creat
 
 Approximately **5-6 hours per day across five days (25–30 hours)** were spent completing the exercise.
 
-This included research into the Air Production Unit (APU) and compressor telemetry to understand the operational context of the signals, dataset investigation, development of the ingestion and validation pipeline, exploratory analysis, domain-led feature engineering, interactive visualisation, code refactoring and engineering polish, documentation, presentation preparation, and final end-to-end reproducibility testing from a fresh environment.
+This included independent research into the Air Production Unit (APU), compressor operation and telemetry signals to establish the operational context of the dataset; dataset investigation; development of the ingestion and validation pipeline; exploratory analysis; domain-led feature engineering; interactive visualisation; code refactoring and engineering polish; documentation and presentation preparation; and final end-to-end reproducibility testing from a fresh environment.
 
 ## Overview
 
