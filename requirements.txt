@@ -4,4 +4,3 @@ requests
 PyYAML
 jupyter
 plotly
-matplotlib

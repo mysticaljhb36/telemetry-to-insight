@@ -11,5 +11,4 @@ dependencies:
   - pyyaml
   - jupyter
   - plotly
-  - matplotlib
   - pip

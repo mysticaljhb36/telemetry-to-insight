@@ -98,8 +98,7 @@ telemetry-to-insight/
 ├── data/
 │   ├── raw/
 │   ├── development/
-│   ├── processed/
-│   └── README.md
+│   └── processed/
 ├── logs/
 │   └── pipeline.log
 ├── notebooks/
