@@ -6,6 +6,39 @@ To reproduce the project from a fresh clone, see the **[Setup Guide](https://git
 
 **Repository:** [telemetry-to-insight](https://github.com/mysticaljhb36/telemetry-to-insight)
 
+## Submission Details
+
+### Public Dataset
+
+This project uses the **MetroPT-3 Dataset** from the UCI Machine Learning Repository:
+
+https://archive.ics.uci.edu/dataset/791/metropt+3+dataset
+
+The dataset contains operational telemetry collected from the Air Production Unit (APU) of a metropolitan train, including pressure, temperature, motor current and digital control signals.
+
+### Computational Environment
+
+The project was developed and tested using:
+
+- Python 3.12
+- Conda environment management
+- Jupyter Notebook
+- pandas
+- PyArrow
+- Plotly
+- PyYAML
+- Requests
+
+The complete computational environment is defined in `environment.yml`, with Python dependencies also provided in `requirements.txt`.
+
+The project was additionally verified from a fresh Git clone using a newly created Conda environment to confirm end-to-end reproducibility.
+
+### Estimated Time Spent
+
+Approximately **5-6 hours per day across five days (25–30 hours)** were spent completing the exercise.
+
+This included research into the Air Production Unit (APU) and compressor telemetry to understand the operational context of the signals, dataset investigation, development of the ingestion and validation pipeline, exploratory analysis, domain-led feature engineering, interactive visualisation, code refactoring and engineering polish, documentation, presentation preparation, and final end-to-end reproducibility testing from a fresh environment.
+
 ## Overview
 
 This project presents an end-to-end **telemetry-to-insight** exploration of the MetroPT-3 railway air-compressor dataset.
