@@ -96,6 +96,7 @@ def ingest_raw_data(config):
             url,
             stream=True,
             timeout=timeout,
+            verify=False, # Temporary SSl bypass
         ) as response:
 
             response.raise_for_status()
@@ -239,4 +240,5 @@ if __name__ == "__main__":
 
     ingest_raw_data(config)
 
-    create_development_data(config)
+    new_var = create_development_data(config)
+  
