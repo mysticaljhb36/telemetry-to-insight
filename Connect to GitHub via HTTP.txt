@@ -1,0 +1,15 @@
+Connect to GitHub via HTTP instead of Credential Manager
+
+$sec = Read-Host "GitHub token" -AsSecureString
+$t = [System.Net.NetworkCredential]::new('', $sec).Password
+git -c credential.helper= -c "url.https://mysticaljhb36:$t@github.com/.insteadOf=https://github.com/" push origin master
+Remove-Variable t, sec
+
+
+Read-Host -AsSecureString: takes the token without showing it on screen or saving it to your command history.
+
+credential.helper=: switches off Credential Manager for this one command, so Git doesn't try to start the blocked sh.exe.
+
+insteadOf: adds the token to the GitHub address for this push only. Nothing is saved to your Git config.
+
+Remove-Variable: clears the token from memory afterwards.
