@@ -30,6 +30,8 @@ reconstructed.
 """
 
 import logging
+import math
+import numbers
 from pathlib import Path
 
 import pandas as pd
@@ -396,15 +398,35 @@ def validate_digital_states(df):
     logger.info("Digital-state validation passed.")
 
 
-def validate_timestamp_continuity(df):
+def validate_timestamp_continuity(df, gap_multiplier=2):
     """
     Inspect telemetry sampling intervals and report significant time gaps.
 
     The median observed sampling interval is used as the typical telemetry
-    interval. Gaps greater than twice this interval are reported for
-    traceability but do not fail the pipeline because missing periods are
-    retained rather than reconstructed.
+    interval. Gaps greater than ``gap_multiplier`` times this interval are
+    reported for traceability but do not fail the pipeline because missing
+    periods are retained rather than reconstructed.
+
+    Args:
+        df: Telemetry DataFrame containing a ``timestamp`` column.
+        gap_multiplier: Multiple of the median interval above which a gap
+            is reported. Defaults to 2.
+
+    Raises:
+        ValueError: If ``gap_multiplier`` is not a positive, finite number.
     """
+
+    # Booleans are a subclass of int, so they are rejected explicitly.
+    if (
+        isinstance(gap_multiplier, bool)
+        or not isinstance(gap_multiplier, numbers.Real)
+        or not math.isfinite(gap_multiplier)
+        or gap_multiplier <= 0
+    ):
+        raise ValueError(
+            "gap_multiplier must be a positive, finite number; "
+            f"received: {gap_multiplier!r}"
+        )
 
     logger.info("Validating timestamp continuity.")
 
@@ -433,25 +455,27 @@ def validate_timestamp_continuity(df):
         maximum_interval,
     )
 
-    # Gaps greater than twice the typical observed interval are retained
-    # and reported rather than filled or reconstructed.
+    # Gaps greater than the configured multiple of the typical observed
+    # interval are retained and reported rather than filled or reconstructed.
     large_gaps = time_gaps[
-        time_gaps > (median_interval * 2)
+        time_gaps > (median_interval * gap_multiplier)
     ]
 
     if large_gaps.empty:
 
         logger.info(
-            "No telemetry gaps greater than twice the median interval "
-            "were detected."
+            "No telemetry gaps greater than %s times the median interval "
+            "were detected.",
+            gap_multiplier,
         )
 
     else:
 
         logger.warning(
             "Telemetry continuity check identified %s gaps greater than "
-            "twice the median sampling interval. Largest gap: %s.",
+            "%s times the median sampling interval. Largest gap: %s.",
             f"{len(large_gaps):,}",
+            gap_multiplier,
             large_gaps.max(),
         )
 
