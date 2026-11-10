@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import numpy as np
 import pytest
 
 # Make the project root importable when pytest is run from any directory.
@@ -158,3 +159,20 @@ def test_invalid_multiplier_raises(df_with_gap, invalid_multiplier):
             df_with_gap,
             gap_multiplier=invalid_multiplier,
         )
+
+
+@pytest.mark.parametrize(
+    "multiplier",
+    [
+        np.float32(2.0),
+        np.float64(2.0),
+        np.int64(2),
+    ],
+)
+def test_numpy_numeric_multipliers_are_accepted(
+    df_with_gap, multiplier
+):
+    validate_timestamp_continuity(
+        df_with_gap,
+        gap_multiplier=multiplier,
+    )
