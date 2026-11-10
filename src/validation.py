@@ -32,6 +32,7 @@ reconstructed.
 import logging
 import math
 import numbers
+import numpy as np
 from pathlib import Path
 
 import pandas as pd
@@ -419,7 +420,7 @@ def validate_timestamp_continuity(df, gap_multiplier=2):
     # Booleans are a subclass of int, so they are rejected explicitly.
     if (
         isinstance(gap_multiplier, bool)
-        or not isinstance(gap_multiplier, numbers.Real)
+        or not isinstance(gap_multiplier, (numbers.Real, np.integer, np.floating))
         or not math.isfinite(gap_multiplier)
         or gap_multiplier <= 0
     ):
