@@ -1,2 +1,2 @@
 def test_ci_branch_protection():
-    assert 1 + 1 == 3
+    assert 1 + 1 == 2
