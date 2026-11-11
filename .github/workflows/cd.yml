@@ -1,0 +1,46 @@
+
+name: MetroPT-3 Production Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout approved code
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas numpy pyarrow pyyaml requests
+
+      - name: Execute MetroPT-3 pipeline
+        run: python -m src.main
+
+      - name: Upload processed telemetry
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metropt3-processed
+          path: data/processed/metropt3_processed.parquet
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload execution logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metropt3-logs
+          path: logs/pipeline.log
+          if-no-files-found: warn
+          retention-days: 7
